@@ -1,0 +1,7 @@
+module SinatraToTheMoon
+  VERSION: String
+
+  module Generator
+    def self.generate: (name: String, ?profile: String, ?destination: String, ?force: bool, ?dry_run: bool) -> Array[String]
+  end
+end

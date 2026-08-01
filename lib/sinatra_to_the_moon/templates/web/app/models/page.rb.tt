@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+module <%= constant_name %>
+  module Models
+    Page = Data.define(:title, :heading, :message)
+  end
+end

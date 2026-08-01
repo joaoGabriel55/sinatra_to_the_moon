@@ -1,0 +1,5 @@
+/.bundle/
+/.env
+/coverage/
+/tmp/
+/.rspec_status

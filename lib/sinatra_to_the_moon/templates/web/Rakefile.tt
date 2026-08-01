@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+require "fileutils"
+require "rspec/core/rake_task"
+require "rubocop/rake_task"
+
+namespace :assets do
+  desc "Compile Tailwind CSS"
+  task :build do
+    FileUtils.mkdir_p("public")
+    sh "tailwindcss", "-i", "assets/stylesheets/application.css", "-o", "public/application.css", "--minify"
+  end
+
+  desc "Watch and compile Tailwind CSS"
+  task :watch do
+    FileUtils.mkdir_p("public")
+    sh "tailwindcss", "-i", "assets/stylesheets/application.css", "-o", "public/application.css", "--watch"
+  end
+end
+
+RSpec::Core::RakeTask.new(:spec)
+RuboCop::RakeTask.new(:rubocop)
+
+task default: ["assets:build", :spec, :rubocop]
