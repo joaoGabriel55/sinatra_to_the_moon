@@ -93,6 +93,7 @@ PLATFORMS
 
 DEPENDENCIES
   graphql (~> 2.5)
+  parallel (~> 2.1)
   rack-test (~> 2.2)
   rake (~> 13.0)
   rspec (~> 3.13)
