@@ -1,0 +1,17 @@
+# frozen_string_literal: true
+
+require "sinatra/base"
+require_relative "app/controllers/home"
+require_relative "app/routes/health"
+
+module MoonApp
+  class App < Sinatra::Base
+    register Controllers::Home
+    register Routes::Health
+
+    configure do
+      set :show_exceptions, false
+      set :views, File.expand_path("views", __dir__)
+    end
+  end
+end
