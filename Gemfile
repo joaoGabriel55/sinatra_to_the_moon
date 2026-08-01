@@ -2,7 +2,10 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in sinatra-scaffold.gemspec
 gemspec
 
-gem "rspec", "~> 3.0"
+# Dependencies used to execute the generated profile specs from this repository.
+gem "graphql", "~> 2.5"
+gem "rack-test", "~> 2.2"
+gem "sinatra", "~> 4.1"
+gem "tailwindcss-ruby"

@@ -1,0 +1,10 @@
+<main class="mx-auto flex min-h-screen max-w-5xl items-center px-6 py-16">
+  <section class="space-y-6">
+    <p class="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">Welcome aboard</p>
+    <h1 class="text-5xl font-bold tracking-tight sm:text-7xl"><%%= @page.heading %></h1>
+    <p class="max-w-2xl text-lg leading-8 text-slate-300"><%%= @page.message %></p>
+    <a class="inline-flex rounded-full bg-cyan-400 px-5 py-3 font-semibold text-slate-950 hover:bg-cyan-300" href="/health">
+      Check system status
+    </a>
+  </section>
+</main>

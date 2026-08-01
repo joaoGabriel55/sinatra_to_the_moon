@@ -5,6 +5,13 @@ require "rspec/core/rake_task"
 
 RSpec::Core::RakeTask.new(:spec)
 
-require "standard/rake"
+require "rubocop/rake_task"
 
-task default: %i[spec standard]
+RuboCop::RakeTask.new(:rubocop)
+
+task default: %i[spec rubocop why_classes]
+
+desc "Check that every class has a reason to exist"
+task :why_classes do
+  sh "why-classes", "--no-rails", "lib", "spec"
+end
