@@ -6,6 +6,8 @@ on:
       - main
 
   pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -26,5 +28,41 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+    - name: Run specs
+      run: bundle exec rspec
+    - name: Audit dependencies
+      run: bundle exec bundle-audit check --update
+    - name: Run quality checks
+      run: bundle exec rubocop && bundle exec why-classes --no-rails lib spec
+
+  publish:
+    name: Publish RubyGem
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.4'
+        bundler-cache: true
+    - name: Check for a version change
+      id: version
+      run: |
+        if git diff --quiet "${{ github.event.before }}" "${{ github.sha }}" -- lib/sinatra_to_the_moon/version.rb; then
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+        else
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+        fi
+    - name: Build gem
+      if: steps.version.outputs.changed == 'true'
+      run: gem build sinatra_to_the_moon.gemspec
+    - name: Publish gem
+      if: steps.version.outputs.changed == 'true'
+      run: gem push sinatra_to_the_moon-*.gem
+      env:
+        GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
