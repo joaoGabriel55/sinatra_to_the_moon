@@ -4,9 +4,9 @@
 
 Put on your headphones and let Frank Sinatra take you on a journey with the timeless classic *Fly Me to the Moon*. Inspired by the legendary singer, the Ruby gem **Sinatra** has long been the go-to choice for lightweight web applications. Now it has a companion: **Sinatra To The Moon**.
 
-Built on top of Sinatra, **Sinatra To The Moon** is a scaffold generator that embraces the philosophy that not every project needs the weight of Rails. Sometimes, all you need is a simple, elegant framework that lets you build quickly, experiment freely, and, as the song says, *play among the stars*.
+Built on top of Sinatra, **Sinatra To The Moon** is an opinionated scaffold generator that embraces the philosophy that not every project needs the weight of Rails. Sometimes, all you need is a focused starting point that lets you build quickly, experiment freely, and, as the song says, *play among the stars*.
 
-This gem allows generates concise, modular, and testable Sinatra web applications, REST APIs, and GraphQL APIs. It provides the `flyme` command while keeping the generated code close to ordinary Sinatra.
+This gem generates concise, modular, and testable Sinatra web applications, REST APIs, and GraphQL APIs through the `flyme` command. It is not a runtime framework: generated applications use ordinary Sinatra and remain independent of `sinatra_to_the_moon` after generation.
 
 ## Successor to Sinatra Scaffold
 
