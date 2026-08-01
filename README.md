@@ -2,6 +2,12 @@
 
 `sinatra_to_the_moon` generates concise, modular, and testable Sinatra web applications, REST APIs, and GraphQL APIs. It provides the `flyme` command while keeping the generated code close to ordinary Sinatra.
 
+## Successor to Sinatra Scaffold
+
+This project is the new version of [`sinatra-scaffold`](https://rubygems.org/gems/sinatra-scaffold). It continues the original scaffold generator under a new gem name and adds the `flyme` CLI, modular project profiles, generated-project testing, GraphQL support, and a default MVC-style web application with Tailwind CSS.
+
+Existing users should install `sinatra_to_the_moon` for future updates. The original `sinatra-scaffold` gem remains available for projects that depend on the 0.1.x releases.
+
 ## Installation
 
 ```sh
